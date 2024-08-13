@@ -7,19 +7,16 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    text-align: center;
-    line-height: 1.6;
 }
 
 .download-container {
+    text-align: center;
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 90%;
+    width: 80%;
     max-width: 400px;
-    margin: 0 auto;
-    box-sizing: border-box;
 }
 
 .download-button {
@@ -27,13 +24,10 @@ body {
     background-color: #ff5722;
     color: white;
     text-decoration: none;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 5px;
     margin-top: 20px;
     transition: background-color 0.3s ease;
-    font-size: 16px;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .download-button:hover {
@@ -69,7 +63,6 @@ body {
     background-color: #4caf50;
     color: white;
     border-radius: 5px;
-    box-sizing: border-box;
 }
 
 .install-notification button {
@@ -80,32 +73,38 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    font-size: 14px;
 }
 
 .install-notification button:hover {
     background-color: #e64a19;
-    cursor: pointer;
 }
 
-/* ریسپانسیو برای صفحه‌نمایش‌های کوچک‌تر */
-@media (max-width: 600px) {
-    .download-container {
-        width: 100%;
-        padding: 15px;
-    }
+/* پاپ آپ خطا */
+.error-popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ff5722;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-align: center;
+}
 
-    .download-button {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
+.error-popup button {
+    background-color: white;
+    color: #ff5722;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
 
-    .progress-info {
-        font-size: 12px;
-    }
-
-    .install-notification button {
-        padding: 8px 12px;
-        font-size: 12px;
-    }
+.error-popup button:hover {
+    background-color: #f0f0f0;
 }

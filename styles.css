@@ -1,80 +1,71 @@
-body {
-    font-family: 'Vazir', sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
+/* استایل برای نوار دانلود */
 .download-container {
     text-align: center;
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 80%;
-    max-width: 400px;
+    margin: 20px;
 }
 
 .download-button {
     display: inline-block;
-    background-color: #ff5722;
-    color: white;
-    text-decoration: none;
     padding: 10px 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
     border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
 }
 
 .download-button:hover {
-    background-color: #e64a19;
+    background-color: #0056b3;
 }
 
 .progress-bar {
     width: 100%;
-    height: 10px;
-    background-color: #e0e0e0;
+    background-color: #f3f3f3;
     border-radius: 5px;
-    margin-top: 20px;
-    overflow: hidden;
+    margin-top: 10px;
 }
 
 .progress {
     width: 0;
-    height: 100%;
-    background-color: #4caf50;
-    transition: width 0.3s ease;
+    height: 20px;
+    background-color: #28a745;
+    border-radius: 5px;
 }
 
 .progress-info {
     margin-top: 10px;
-    font-size: 14px;
-    color: #666;
+    font-size: 16px;
 }
 
 .install-notification {
     display: none;
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #4caf50;
-    color: white;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
     border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    padding: 10px;
+    text-align: center;
+}
+
+.install-notification p {
+    margin: 0 0 10px;
 }
 
 .install-notification button {
-    background-color: #ff5722;
-    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
     border: none;
-    padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
 }
 
 .install-notification button:hover {
-    background-color: #e64a19;
+    background-color: #0056b3;
 }

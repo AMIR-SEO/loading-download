@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دانلود اپلیکیشن نوار</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="download-container">
+    <a href="https://game.ssgame.ir//data/package/android/cps001/ssgame_wgjx_cps001_34.apk" class="download-button" onclick="startDownload()">دانلود اپلیکیشن نوار</a>
+    <div class="progress-bar">
+        <div class="progress" id="progress"></div>
+    </div>
+    <div class="progress-info">
+        <span id="percentage">0%</span> - 
+        <span id="downloaded-size">0KB</span> از 
+        <span id="total-size">50000KB</span>
+    </div>
+</div>
+
+<!-- نوتیفیکیشن نصب -->
+<div id="install-notification" class="install-notification">
+    <p>دانلود کامل شد! آیا می‌خواهید برنامه را نصب کنید؟</p>
+    <button onclick="installApp()">نصب</button>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

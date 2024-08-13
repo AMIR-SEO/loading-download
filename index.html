@@ -22,10 +22,16 @@
 
 <!-- نوتیفیکیشن نصب -->
 <div id="install-notification" class="install-notification">
-    <p>دانلود کامل شد! لطفاً به لیست دانلودهای مرورگر یا فایل منیجر دستگاه خود مراجعه کرده و فایل را نصب کنید.</p>
+    <p>دانلود کامل شد! آیا می‌خواهید برنامه را نصب کنید؟</p>
     <button onclick="installApp()">نصب</button>
 </div>
 
-<script src="app.js"></script>
+<!-- پاپ آپ خطا -->
+<div id="error-popup" class="error-popup">
+    <p id="error-message"></p>
+    <button onclick="closeErrorPopup()">بستن</button>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>

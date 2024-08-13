@@ -8,7 +8,7 @@ function startDownload() {
     const url = 'https://game.ssgame.ir//data/package/android/cps001/ssgame_wgjx_cps001_34.apk';
 
     fetch(url, { method: 'HEAD' }).then(response => {
-        // چک کردن وضعیت پاسخ سرور
+        // بررسی صحت پاسخ
         if (!response.ok) {
             showErrorPopup('مشکل در دریافت اطلاعات فایل. لطفاً مجدداً تلاش کنید.');
             return;
@@ -71,4 +71,3 @@ function showErrorPopup(message) {
 function installApp() {
     alert('دانلود کامل شد. لطفاً به لیست دانلودهای مرورگر یا فایل منیجر مراجعه کرده و فایل APK را نصب کنید.');
 }
-

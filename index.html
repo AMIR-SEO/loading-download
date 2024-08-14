@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دانلود اپلیکیشن نوار</title>
+    <title>دانلود بازی Rise of Kingdoms</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
 <div class="download-container">
-    <a href="javascript:void(0);" class="download-button" onclick="startDownload()">دانلود اپلیکیشن نوار</a>
+    <a href="javascript:void(0);" class="download-button" onclick="startDownload()">دانلود بازی Rise of Kingdoms</a>
     <div class="progress-bar">
         <div class="progress" id="progress"></div>
     </div>
@@ -18,17 +18,13 @@
         <span id="downloaded-size">0KB</span> از 
         <span id="total-size">0KB</span>
     </div>
-    <div id="timer" class="timer">زمان باقی‌مانده: محاسبه می‌شود...</div>
 </div>
 
 <!-- نوتیفیکیشن نصب -->
 <div id="install-notification" class="install-notification">
-    <p>دانلود کامل شد! آیا می‌خواهید برنامه را نصب کنید؟</p>
-    <button onclick="installApp()">نصب</button>
+    <p>دانلود کامل شد! لطفاً فایل APK را از پوشه دانلودها یا فایل منیجر خود نصب کنید.</p>
+    <button onclick="openDownloads()">مشاهده لیست دانلودها</button>
 </div>
-
-<!-- آیکون بارگذاری -->
-<div id="loading-icon" class="loading-icon"></div>
 
 <script src="script.js"></script>
 </body>

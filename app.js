@@ -1,87 +1,44 @@
 function startDownload() {
-    const progress = document.getElementById('progress');
-    const percentage = document.getElementById('percentage');
-    const downloadedSize = document.getElementById('downloaded-size');
-    const totalSize = document.getElementById('total-size');
-    const installNotification = document.getElementById('install-notification');
-    const timer = document.getElementById('timer');
-    const loadingIcon = document.getElementById('loading-icon');
+    const url = 'https://github.com/AMIR-SEO/loading-download/raw/main/ssgame_yxhz_riseofkingdoms_2_332.apk';  // آدرس دانلود فایل از گیت‌هاب
+    const xhr = new XMLHttpRequest();
+    
+    xhr.open('GET', url, true);
+    xhr.responseType = 'blob';
 
-    const url = 'https://game.ssgame.ir//data/package/android/cps001/ssgame_wgjx_cps001_34.apk';
+    xhr.onprogress = function (event) {
+        if (event.lengthComputable) {
+            const downloaded = event.loaded;
+            const total = event.total;
+            const percentage = (downloaded / total) * 100;
 
-    fetch(url, { method: 'HEAD' })
-    .then(response => {
-        if (!response.ok) {
-            showErrorPopup('مشکل در دریافت اطلاعات فایل. لطفاً مجدداً تلاش کنید.');
-            return;
+            document.getElementById('progress').style.width = percentage + '%';
+            document.getElementById('percentage').textContent = Math.round(percentage) + '%';
+            document.getElementById('downloaded-size').textContent = (downloaded / 1024).toFixed(2) + 'KB';
+            document.getElementById('total-size').textContent = (total / 1024).toFixed(2) + 'KB';
         }
+    };
 
-        const totalFileSize = parseInt(response.headers.get('content-length'), 10) / 1024; // به کیلوبایت
-        totalSize.innerText = `${Math.round(totalFileSize)}KB`;
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            const blob = xhr.response;
+            const downloadLink = document.createElement('a');
+            downloadLink.href = window.URL.createObjectURL(blob);
+            downloadLink.download = 'ssgame_yxhz_riseofkingdoms_2_332.apk';
+            downloadLink.click();
 
-        let progressValue = 0;
-        let startTime = Date.now();
-        
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', url, true);
-        xhr.responseType = 'blob';
+            document.getElementById('install-notification').style.display = 'block';
+        } else {
+            alert('مشکلی در دانلود به وجود آمد. لطفاً دوباره امتحان کنید.');
+        }
+    };
 
-        xhr.onprogress = (event) => {
-            if (event.lengthComputable) {
-                progressValue = event.loaded / 1024;
-                const percent = (progressValue / totalFileSize) * 100;
-                progress.style.width = `${percent}%`;
-                percentage.innerText = `${Math.round(percent)}%`;
-                downloadedSize.innerText = `${Math.round(progressValue)}KB`;
+    xhr.onerror = function () {
+        alert('مشکلی در دانلود به وجود آمد. لطفاً دوباره امتحان کنید.');
+    };
 
-                // محاسبه زمان باقی‌مانده
-                const elapsedTime = (Date.now() - startTime) / 1000; // زمان به ثانیه
-                const downloadRate = progressValue / elapsedTime; // سرعت دانلود به کیلوبایت بر ثانیه
-                const remainingTime = ((totalFileSize - progressValue) / downloadRate).toFixed(0);
-                timer.innerText = `زمان باقی‌مانده: ${formatTime(remainingTime)}`;
-            }
-        };
-
-        xhr.onloadend = () => {
-            loadingIcon.style.display = 'none';
-            if (xhr.status === 200) {
-                const blob = xhr.response;
-                const downloadUrl = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = downloadUrl;
-                a.download = 'ssgame_wgjx_cps001_34.apk';
-                document.body.appendChild(a);
-                a.click();
-                URL.revokeObjectURL(downloadUrl);
-                installNotification.style.display = 'block';
-            } else {
-                showErrorPopup('خطا در دانلود فایل. لطفاً مجدداً تلاش کنید.');
-            }
-        };
-
-        xhr.onerror = () => {
-            loadingIcon.style.display = 'none';
-            showErrorPopup('مشکلی در دانلود فایل به وجود آمده است. لطفاً اتصال اینترنت خود را بررسی کنید.');
-        };
-
-        xhr.send();
-        loadingIcon.style.display = 'block';
-    })
-    .catch(err => {
-        showErrorPopup('مشکل در دریافت اطلاعات فایل. لطفاً مجدداً تلاش کنید.');
-    });
+    xhr.send();
 }
 
-function showErrorPopup(message) {
-    alert(message);
-}
-
-function installApp() {
-    alert('دانلود کامل شد. لطفاً به لیست دانلودهای مرورگر یا فایل منیجر مراجعه کرده و فایل APK را نصب کنید.');
-}
-
-function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const remainingSeconds = Math.floor(seconds % 60);
-    return `${minutes} دقیقه و ${remainingSeconds} ثانیه`;
+function openDownloads() {
+    alert('لطفاً به لیست دانلودهای مرورگر خود مراجعه کنید و فایل APK را نصب کنید.');
 }

@@ -4,7 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دانلود بازی Rise of Kingdoms</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Vazir', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .download-container {
+            text-align: center;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .download-button {
+            display: inline-block;
+            background-color: #ff5722;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #e64a19;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            width: 0;
+            height: 100%;
+            background-color: #4caf50;
+            transition: width 0.3s ease;
+        }
+
+        .progress-info {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .install-notification {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 5px;
+        }
+
+        .install-notification button {
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .install-notification button:hover {
+            background-color: #e64a19;
+        }
+    </style>
 </head>
 <body>
 
@@ -26,6 +107,51 @@
     <button onclick="openDownloads()">مشاهده لیست دانلودها</button>
 </div>
 
-<script src="script.js"></script>
+<script>
+    function startDownload() {
+        const url = 'https://github.com/AMIR-SEO/loading-download/raw/main/ssgame_yxhz_riseofkingdoms_2_332.apk';  // آدرس دانلود فایل از گیت‌هاب
+        const xhr = new XMLHttpRequest();
+        
+        xhr.open('GET', url, true);
+        xhr.responseType = 'blob';
+
+        xhr.onprogress = function (event) {
+            if (event.lengthComputable) {
+                const downloaded = event.loaded;
+                const total = event.total;
+                const percentage = (downloaded / total) * 100;
+
+                document.getElementById('progress').style.width = percentage + '%';
+                document.getElementById('percentage').textContent = Math.round(percentage) + '%';
+                document.getElementById('downloaded-size').textContent = (downloaded / 1024).toFixed(2) + 'KB';
+                document.getElementById('total-size').textContent = (total / 1024).toFixed(2) + 'KB';
+            }
+        };
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                const blob = xhr.response;
+                const downloadLink = document.createElement('a');
+                downloadLink.href = window.URL.createObjectURL(blob);
+                downloadLink.download = 'ssgame_yxhz_riseofkingdoms_2_332.apk';
+                downloadLink.click();
+
+                document.getElementById('install-notification').style.display = 'block';
+            } else {
+                alert('مشکلی در دانلود به وجود آمد. لطفاً دوباره امتحان کنید.');
+            }
+        };
+
+        xhr.onerror = function () {
+            alert('مشکلی در دانلود به وجود آمد. لطفاً دوباره امتحان کنید.');
+        };
+
+        xhr.send();
+    }
+
+    function openDownloads() {
+        alert('لطفاً به لیست دانلودهای مرورگر خود مراجعه کنید و فایل APK را نصب کنید.');
+    }
+</script>
 </body>
 </html>
